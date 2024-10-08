@@ -1,4 +1,4 @@
 # RentACarProject
 
 Backend developer: Denis
-Fronend developer: Luchia
+Frontend developer: Luchia
