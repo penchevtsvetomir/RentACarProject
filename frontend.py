@@ -1,8 +1,10 @@
 # Luchia
 from backend import *
 
+
 def check_available_cars():
     pass
+
 
 def rent_car():
     pass
@@ -17,8 +19,8 @@ def display_menu():
     print("1. View Cars")
     print("2. Rent a Car")
     print("3. Return a Car")
-    print("5. Administrator")
-    print("4. Exit")
+    print("4. Administrator")
+    print("5. Exit")
     return input("Please choose an option (1-5): ")
 
 
@@ -31,7 +33,19 @@ def admin_menu():
 
 
 def main():
-    choice = display_menu()
-    pass
+    while True:
+        choice = display_menu()
 
+        if choice == '1':
+            check_available_cars()
+        if choice == '2':
+            rent_car()
+        if choice == '3':
+            return_car()
+        if choice == '4':
+            admin_menu()
+        if choice == '5':
+            exit('You exited the program.')
+        else:
+            print('Invalid option. Please try again:')
 
