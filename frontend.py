@@ -1,40 +1,13 @@
 # Luchia
 from backend import *
 
-cars = [
-    {"id": 1, "brand": "Toyota", "model": "Camry", "rental_price": 40, "available": "True", "current_km": "0"},
-    {"id": 2, "brand": "Ford", "model": "F150", "rental_price": 60, "available": "True", "current_km": "0"},
-    {"id": 3, "brand": "Opel", "model": "Insignia", "rental_price": 35, "available": "True", "current_km": "0"}
-    ]
-
+admin_pass = 'admin123'
 
 def check_available_cars():
     print(f'Available cars:')
     for car in cars:
         status = 'Available' if car['available'] else 'Rented'
         print(f"{car['id']}: {car['brand']} {car['model']} - {status}")
-
-
-def rent_car(_cars, car_id):
-    for car in cars:
-        if car["id"] == car_id:
-            if car["available"]:
-                car["available"] = False
-                return f"You rented {car['brand']} {car['model']}."
-            else:
-                return "The car is already rented."
-    return "Unavailable car ID."
-
-
-def return_car(__cars, car_id):
-    for car in cars:
-        if car["id"] == car_id:
-            if not car["available"]:
-                car["available"] = True
-                return f"You returned {car['brand']} {car['model']}."
-            else:
-                return "The car is already available."
-    return "Unavailable car ID."
 
 
 def display_menu():
@@ -62,14 +35,27 @@ def main_menu():
         if choice == '1':
             check_available_cars()
         elif choice == '2':
-            car_id = int(input("Enter the car ID you want to rent: "))
+            car_id = int(input('Enter the car ID you want to rent: '))
             print(rent_car(cars, car_id))
         elif choice == '3':
-            car_id = int(input("Enter the car ID you want to return: "))
+            car_id = int(input('Enter the car ID you want to return: '))
             print(return_car(cars, car_id))
         elif choice == '4':
-            admin_menu()
+            print('Enter the admin password:')
+            password = input()
+            if password == admin_pass:
+                command = admin_menu()
+                if command == '1':
+                    add_car()
+                elif command == '2':
+                    remove_car()
+                elif command == '3':
+                    main_menu()
+            else:
+                print('Incorrect password, access denied.\nReturning to main menu.')
+                main_menu()
         elif choice == '5':
             exit('You exited the program.')
         else:
             print('Invalid option. Please try again.')
+
