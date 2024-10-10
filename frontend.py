@@ -1,5 +1,5 @@
 # Luchia
-from backend import *
+from backend import initialize_cars, add_car, remove_car, edit_car, rent_car, return_car, calculate_total
 
 admin_pass = 'admin123'
 
@@ -60,3 +60,5 @@ def main_menu():
         else:
             print('Invalid option. Please try again.')
 
+
+main_menu()

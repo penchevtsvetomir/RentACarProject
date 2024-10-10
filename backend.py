@@ -1,8 +1,9 @@
 # Denis
-from frontend import *
+# from frontend import *
 import time
 
 
+# TODO: cars е недостъпно за други функции, защото е вътрешна променлива за тази функция. Трябва или да се извади като глобална променлива или да се извиква тази фунцкия от другите.
 def initialize_cars():
     """Creates initial database of cars."""
     cars = [
@@ -37,6 +38,7 @@ def initialize_cars():
 
 
 def add_car():
+#TODO Car ID да се задава автоматично, иначе може да се дубликира с вече съществуващо
     car_id = int(input("Enter a car ID: "))
     car_brand = input("Enter brand name: ")
     car_model = input("Enter model name: ")
@@ -69,7 +71,7 @@ def remove_car():
 
 def edit_car():
     car_id = int(input("Enter a car ID: "))
-
+#TODO Защо със функция next?
     # Finding the car to edit
     car = next((car for car in cars if car["id"] == car_id), None)
     if not car:
@@ -111,11 +113,13 @@ def rent_car(cars, car_id):
 
 def return_car(cars, car_model):
     """"Processes a customer request to return a rented car."""
+
     for car in cars:
         if car_model == car["brand"] + " " + car["model"] and car["available"] == False:
             car["available"] = True
             return "You successfully returned the car!"
     return "No such car found! Please try again."
+
 
 def calculate_total(car_model, mileage, cars):
     """Calculates the total rented car price."""
