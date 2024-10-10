@@ -61,4 +61,4 @@ def main_menu():
             print('Invalid option. Please try again.')
 
 
-main()
+main_menu()
