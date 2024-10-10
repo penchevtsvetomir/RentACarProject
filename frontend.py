@@ -3,6 +3,7 @@ from backend import *
 
 admin_pass = 'admin123'
 
+
 def check_available_cars():
     print(f'Available cars:')
     for car in cars:
